@@ -1,49 +1,49 @@
-// Đợi cho đến khi toàn bộ nội dung HTML được tải xong
+// Wait until the entire HTML document is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
 
-// Lấy các phần tử cần thiết từ DOM
+// Get the necessary HTML elements
 const intentInput = document.getElementById('intentInput');
 const executeButton = document.getElementById('executeButton');
 const resultDisplay = document.getElementById('resultDisplay');
 
-// Mảng mô phỏng các kết quả có thể có
+// Array to simulate possible results
 const possibleResults = [
-"Hoán đổi ETH lấy USDC với giá tốt nhất, sử dụng nhiều DEX để tối ưu.",
-"Dùng USDC để mua NFT X trên OpenSea sau khi hoán đổi.",
-"Chuyển ETH từ chuỗi Ethereum sang Polygon và hoán đổi nó lấy MATIC.",
-"Không thể thực hiện ý định này. Vui lòng thử lại."
+"Swap ETH for USDC at the best rate, using multiple DEXs for optimization.",
+"Use USDC to buy NFT X on OpenSea after the swap.",
+"Transfer ETH from Ethereum chain to Polygon and swap it for MATIC.",
+"No solution could be found for this intent. Please try again."
 ];
 
-// Xử lý sự kiện khi nút "Execute Intent" được click
+// Handle the click event on the "Execute Intent" button
 executeButton.addEventListener('click', () => {
 const userIntent = intentInput.value.trim();
 
-// Kiểm tra nếu ô input rỗng
+// Check if the input is empty
 if (userIntent === "") {
-resultDisplay.innerHTML = '<p class="error">Vui lòng nhập ý định của bạn.</p>';
+resultDisplay.innerHTML = '<p class="error">Please enter your intent.</p>';
 return;
 }
 
-// Tạo hiệu ứng loading
-resultDisplay.innerHTML = '<p class="loading">Đang tìm kiếm giải pháp...</p>';
+// Create a loading effect
+resultDisplay.innerHTML = '<p class="loading">Searching for a solution...</p>';
 
-// Mô phỏng quá trình xử lý intent (có thể mất vài giây)
+// Simulate the intent processing (can take a few seconds)
 setTimeout(() => {
-// Chọn một kết quả ngẫu nhiên để mô phỏng sự đa dạng của mạng lưới solvers
+// Pick a random result to simulate the diversity of the solver network
 const randomIndex = Math.floor(Math.random() * possibleResults.length);
 const chosenResult = possibleResults[randomIndex];
 
-// Hiển thị kết quả cho người dùng
-if (chosenResult.includes("Không thể")) {
+// Display the result to the user
+if (chosenResult.includes("No solution")) {
 resultDisplay.innerHTML = `<p class="error">${chosenResult}</p>`;
 } else {
 resultDisplay.innerHTML = `
-<p class="success"><strong>✅ Ý định đã được thực hiện!</strong></p>
-<p><strong>Ý định của bạn:</strong> "${userIntent}"</p>
-<p><strong>Giải pháp được tìm thấy:</strong> ${chosenResult}</p>
+<p class="success"><strong>✅ Intent executed!</strong></p>
+<p><strong>Your Intent:</strong> "${userIntent}"</p>
+<p><strong>Solution Found:</strong> ${chosenResult}</p>
 `;
 }
 
-}, 2000); // Giả lập thời gian xử lý 2 giây
+}, 2000); // Simulate a 2-second processing time
 });
 });
