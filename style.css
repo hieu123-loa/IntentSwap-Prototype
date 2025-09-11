@@ -1,0 +1,117 @@
+/* Tùy chỉnh các yếu tố cơ bản của trang */
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f4f7f9;
+margin: 0;
+text-align: center;
+color: #333;
+}
+
+/* Kiểu dáng cho container chính */
+.container {
+background: #ffffff;
+padding: 40px;
+border-radius: 12px;
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+width: 90%;
+max-width: 500px;
+box-sizing: border-box;
+}
+
+/* Tiêu đề */
+h1 {
+font-size: 2.5em;
+color: #1a237e;
+margin-bottom: 10px;
+}
+
+/* Đoạn mô tả */
+p {
+color: #555;
+font-size: 1.1em;
+margin-bottom: 25px;
+}
+
+/* Ô input */
+input {
+width: 100%;
+padding: 12px;
+margin-bottom: 20px;
+border: 1px solid #ddd;
+border-radius: 8px;
+font-size: 1em;
+box-sizing: border-box;
+transition: border-color 0.3s ease;
+}
+
+input:focus {
+outline: none;
+border-color: #007bff;
+}
+
+/* Nút bấm */
+button {
+background-color: #007bff;
+color: white;
+border: none;
+padding: 14px 25px;
+border-radius: 8px;
+font-size: 1.1em;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.1s ease;
+width: 100%;
+}
+
+button:hover {
+background-color: #0056b3;
+}
+
+button:active {
+transform: translateY(1px);
+}
+
+/* Khu vực hiển thị kết quả */
+#resultDisplay {
+margin-top: 30px;
+font-size: 1em;
+line-height: 1.6;
+min-height: 60px;
+padding: 15px;
+border-radius: 8px;
+text-align: left;
+}
+
+/* Kiểu dáng cho các thông báo */
+.loading {
+color: #ff9800;
+font-weight: bold;
+animation: pulse 1.5s infinite;
+}
+
+.success {
+background-color: #e8f5e9;
+color: #2e7d32;
+padding: 15px;
+border-radius: 8px;
+}
+
+.success strong {
+color: #1b5e20;
+}
+
+.error {
+background-color: #ffebee;
+color: #c62828;
+padding: 15px;
+border-radius: 8px;
+}
+
+/* Hiệu ứng animation */
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.02); }
+100% { transform: scale(1); }
