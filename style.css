@@ -1,4 +1,4 @@
-/* Tùy chỉnh các yếu tố cơ bản của trang */
+/* Basic styling for the entire page */
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 display: flex;
@@ -11,7 +11,7 @@ text-align: center;
 color: #333;
 }
 
-/* Kiểu dáng cho container chính */
+/* Styling for the main container */
 .container {
 background: #ffffff;
 padding: 40px;
@@ -22,21 +22,21 @@ max-width: 500px;
 box-sizing: border-box;
 }
 
-/* Tiêu đề */
+/* Heading styles */
 h1 {
 font-size: 2.5em;
 color: #1a237e;
 margin-bottom: 10px;
 }
 
-/* Đoạn mô tả */
+/* Paragraph styles */
 p {
 color: #555;
 font-size: 1.1em;
 margin-bottom: 25px;
 }
 
-/* Ô input */
+/* Input field styles */
 input {
 width: 100%;
 padding: 12px;
@@ -53,7 +53,7 @@ outline: none;
 border-color: #007bff;
 }
 
-/* Nút bấm */
+/* Button styles */
 button {
 background-color: #007bff;
 color: white;
@@ -74,7 +74,7 @@ button:active {
 transform: translateY(1px);
 }
 
-/* Khu vực hiển thị kết quả */
+/* Result display area */
 #resultDisplay {
 margin-top: 30px;
 font-size: 1em;
@@ -85,7 +85,7 @@ border-radius: 8px;
 text-align: left;
 }
 
-/* Kiểu dáng cho các thông báo */
+/* Styling for different message types */
 .loading {
 color: #ff9800;
 font-weight: bold;
@@ -110,8 +110,10 @@ padding: 15px;
 border-radius: 8px;
 }
 
-/* Hiệu ứng animation */
+/* Animation */
 @keyframes pulse {
 0% { transform: scale(1); }
 50% { transform: scale(1.02); }
 100% { transform: scale(1); }
+}
+
