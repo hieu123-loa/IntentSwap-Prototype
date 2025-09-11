@@ -8,10 +8,9 @@ const resultDisplay = document.getElementById('resultDisplay');
 
 // Array to simulate possible results
 const possibleResults = [
-"Swap ETH for USDC at the best rate, using multiple DEXs for optimization.",
-"Use USDC to buy NFT X on OpenSea after the swap.",
-"Transfer ETH from Ethereum chain to Polygon and swap it for MATIC.",
-"No solution could be found for this intent. Please try again."
+"Use ETH to buy on Opensea
+link: opensea.io/collection/shrimpers-nft-69.",
+
 ];
 
 // Handle the click event on the "Execute Intent" button
@@ -47,3 +46,4 @@ resultDisplay.innerHTML = `
 }, 2000); // Simulate a 2-second processing time
 });
 });
+
