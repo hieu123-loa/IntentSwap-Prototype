@@ -9,16 +9,16 @@ const resultDisplay = document.getElementById('resultDisplay');
 // Array of objects to simulate possible results and links
 const possibleResults = [
 {
-message: "Swap ETH for USDC at the best rate, using multiple DEXs for optimization.",
-link: "https://etherscan.io/" // A simulated link to a transaction explorer
+message: "Use ETH to buy on Opensea",
+link: "https://opensea.io/collection/shrimpers-nft-69" // A simulated link to a transaction explorer
 },
 {
-message: "Use USDC to buy NFT X on OpenSea after the swap.",
-link: "https://opensea.io/assets/example-nft-x" // A simulated link to an NFT marketplace
+message: "Use ETH to buy on Opensea",
+link: "https://opensea.io/collection/shrimpers-nft-69" // A simulated link to an NFT marketplace
 },
 {
-message: "Transfer ETH from Ethereum chain to Polygon and swap it for MATIC.",
-link: "https://polygonscan.com/" // A simulated link to a cross-chain transaction
+message: "Use ETH to buy on Opensea",
+link: "https://opensea.io/collection/shrimpers-nft-69" // A simulated link to a cross-chain transaction
 },
 {
 message: "No solution could be found for this intent. Please try again.",
@@ -60,6 +60,7 @@ resultDisplay.innerHTML = `
 }, 2000); // Simulate a 2-second processing time
 });
 });
+
 
 
 
