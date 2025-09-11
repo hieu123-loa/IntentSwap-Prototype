@@ -6,11 +6,24 @@ const intentInput = document.getElementById('intentInput');
 const executeButton = document.getElementById('executeButton');
 const resultDisplay = document.getElementById('resultDisplay');
 
-// Array to simulate possible results
+// Array of objects to simulate possible results and links
 const possibleResults = [
-"Use ETH to buy on Opensea
-link: opensea.io/collection/shrimpers-nft-69.",
-
+{
+message: "Swap ETH for USDC at the best rate, using multiple DEXs for optimization.",
+link: "https://etherscan.io/" // A simulated link to a transaction explorer
+},
+{
+message: "Use USDC to buy NFT X on OpenSea after the swap.",
+link: "https://opensea.io/assets/example-nft-x" // A simulated link to an NFT marketplace
+},
+{
+message: "Transfer ETH from Ethereum chain to Polygon and swap it for MATIC.",
+link: "https://polygonscan.com/" // A simulated link to a cross-chain transaction
+},
+{
+message: "No solution could be found for this intent. Please try again.",
+link: null
+}
 ];
 
 // Handle the click event on the "Execute Intent" button
@@ -26,24 +39,27 @@ return;
 // Create a loading effect
 resultDisplay.innerHTML = '<p class="loading">Searching for a solution...</p>';
 
-// Simulate the intent processing (can take a few seconds)
+// Simulate the intent processing (takes a few seconds)
 setTimeout(() => {
 // Pick a random result to simulate the diversity of the solver network
 const randomIndex = Math.floor(Math.random() * possibleResults.length);
 const chosenResult = possibleResults[randomIndex];
 
 // Display the result to the user
-if (chosenResult.includes("No solution")) {
-resultDisplay.innerHTML = `<p class="error">${chosenResult}</p>`;
+if (chosenResult.link === null) {
+resultDisplay.innerHTML = `<p class="error">${chosenResult.message}</p>`;
 } else {
 resultDisplay.innerHTML = `
 <p class="success"><strong>✅ Intent executed!</strong></p>
 <p><strong>Your Intent:</strong> "${userIntent}"</p>
-<p><strong>Solution Found:</strong> ${chosenResult}</p>
+<p><strong>Solution Found:</strong> ${chosenResult.message}</p>
+<a href="${chosenResult.link}" class="solution-link" target="_blank">View Transaction</a>
 `;
 }
 
 }, 2000); // Simulate a 2-second processing time
 });
 });
+
+
 
