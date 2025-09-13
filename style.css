@@ -1,119 +1,182 @@
-/* Basic styling for the entire page */
+:root {
+--primary-color: #5d5dff; /* Anoma-style purple */
+--background-color: #f0f2f5;
+--card-background: #ffffff;
+--text-color: #333;
+--border-color: #e0e0e0;
+--shadow-color: rgba(0, 0, 0, 0.05);
+}
+
 body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-family: 'Poppins', sans-serif;
+background-color: var(--background-color);
+color: var(--text-color);
 display: flex;
 justify-content: center;
 align-items: center;
-height: 100vh;
-background-color: #f4f7f9;
+min-height: 100vh;
 margin: 0;
-text-align: center;
-color: #333;
 }
 
-/* Styling for the main container */
 .container {
-background: #ffffff;
-padding: 40px;
-border-radius: 12px;
-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-width: 90%;
-max-width: 500px;
-box-sizing: border-box;
-}
-
-/* Heading styles */
-h1 {
-font-size: 2.5em;
-color: #1a237e;
-margin-bottom: 10px;
-}
-
-/* Paragraph styles */
-p {
-color: #555;
-font-size: 1.1em;
-margin-bottom: 25px;
-}
-
-/* Input field styles */
-input {
 width: 100%;
-padding: 12px;
+max-width: 600px;
+padding: 20px;
+}
+
+.title {
+text-align: center;
+color: var(--primary-color);
+margin-bottom: 5px;
+}
+
+.subtitle {
+text-align: center;
+color: #666;
 margin-bottom: 20px;
-border: 1px solid #ddd;
-border-radius: 8px;
-font-size: 1em;
-box-sizing: border-box;
-transition: border-color 0.3s ease;
 }
 
-input:focus {
+.intent-box,
+.transaction-history-container {
+background-color: var(--card-background);
+border-radius: 12px;
+box-shadow: 0 4px 12px var(--shadow-color);
+padding: 24px;
+border: 1px solid var(--border-color);
+}
+
+.intent-box {
+margin-bottom: 20px;
+}
+
+.intent-header h3 {
+margin-top: 0;
+margin-bottom: 20px;
+text-align: center;
+}
+
+.input-group {
+display: flex;
+gap: 10px;
+}
+
+#intentInput {
+flex-grow: 1;
+padding: 12px 16px;
+font-size: 1rem;
+border: 1px solid var(--border-color);
+border-radius: 8px;
 outline: none;
-border-color: #007bff;
+transition: border-color 0.2s;
 }
 
-/* Button styles */
-button {
-background-color: #007bff;
-color: white;
+#intentInput:focus {
+border-color: var(--primary-color);
+}
+
+#executeButton {
+padding: 12px 24px;
+background-color: var(--primary-color);
+color: #fff;
 border: none;
-padding: 14px 25px;
 border-radius: 8px;
-font-size: 1.1em;
+font-size: 1rem;
+font-weight: 600;
 cursor: pointer;
-transition: background-color 0.3s ease, transform 0.1s ease;
-width: 100%;
+transition: background-color 0.2s;
 }
 
-button:hover {
-background-color: #0056b3;
+#executeButton:hover {
+background-color: #4a4ac9;
 }
 
-button:active {
-transform: translateY(1px);
-}
-
-/* Result display area */
-#resultDisplay {
-margin-top: 30px;
-font-size: 1em;
-line-height: 1.6;
-min-height: 60px;
+.result-display {
+margin-top: 20px;
 padding: 15px;
+background-color: #f7f8fa;
 border-radius: 8px;
-text-align: left;
+border: 1px solid var(--border-color);
+min-height: 80px;
 }
 
-/* Styling for different message types */
+.result-display p {
+margin: 0;
+}
+
 .loading {
-color: #ff9800;
-font-weight: bold;
-animation: pulse 1.5s infinite;
+color: var(--primary-color);
+font-weight: 600;
 }
 
 .success {
-background-color: #e8f5e9;
-color: #2e7d32;
-padding: 15px;
-border-radius: 8px;
-}
-
-.success strong {
-color: #1b5e20;
+color: #28a745;
+font-weight: 600;
 }
 
 .error {
-background-color: #ffebee;
-color: #c62828;
-padding: 15px;
-border-radius: 8px;
+color: #dc3545;
+font-weight: 600;
 }
 
-/* Animation */
-@keyframes pulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.02); }
-100% { transform: scale(1); }
+.transaction-history-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
 }
+
+.transaction-history-container h3 {
+margin-bottom: 15px;
+}
+
+#clearHistoryButton {
+margin-bottom: 15px;
+padding: 8px 16px;
+border: 1px solid #ccc;
+background-color: #f0f0f0;
+border-radius: 8px;
+cursor: pointer;
+}
+
+#historyList {
+list-style: none;
+padding: 0;
+margin: 0;
+width: 100%;
+}
+
+.no-history {
+text-align: center;
+color: #999;
+}
+
+.history-item {
+background-color: #f7f8fa;
+padding: 12px;
+border-radius: 8px;
+margin-bottom: 10px;
+}
+
+.history-item-header {
+display: flex;
+justify-content: space-between;
+font-size: 0.9rem;
+color: #666;
+margin-bottom: 5px;
+}
+
+.history-result-content p {
+margin: 0;
+font-size: 0.95rem;
+}
+
+.history-result-content .success {
+color: #28a745;
+}
+
+.history-result-content .error {
+color: #dc3545;
+}
+
+
 
