@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 <title>IntentSwap - Web3 DEX Prototype</title>
 
 <style>
-/* Basic styling for the entire page */
+/* CSS code remains the same as previous response */
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 display: flex;
@@ -19,7 +20,6 @@ text-align: center;
 color: #333;
 }
 
-/* Styling for the main container */
 .container {
 background: #ffffff;
 padding: 40px;
@@ -30,21 +30,40 @@ max-width: 500px;
 box-sizing: border-box;
 }
 
-/* Heading styles */
 h1 {
 font-size: 2.5em;
 color: #1a237e;
 margin-bottom: 10px;
 }
 
-/* Paragraph styles */
 p {
 color: #555;
 font-size: 1.1em;
 margin-bottom: 25px;
 }
 
-/* Input field styles */
+/* New styles for wallet section */
+#walletInfo {
+display: none; /* Initially hidden */
+margin-bottom: 20px;
+padding: 10px;
+background-color: #e3f2fd;
+border-radius: 8px;
+font-size: 0.9em;
+}
+
+#walletInfo p {
+margin: 5px 0;
+}
+
+#connectButton {
+background-color: #2196f3;
+}
+
+#connectButton:hover {
+background-color: #1e88e5;
+}
+
 input {
 width: 100%;
 padding: 12px;
@@ -61,7 +80,6 @@ outline: none;
 border-color: #007bff;
 }
 
-/* Button styles */
 button {
 background-color: #007bff;
 color: white;
@@ -82,7 +100,6 @@ button:active {
 transform: translateY(1px);
 }
 
-/* Result display area */
 #resultDisplay {
 margin-top: 30px;
 font-size: 1em;
@@ -93,7 +110,6 @@ border-radius: 8px;
 text-align: left;
 }
 
-/* Styling for different message types */
 .loading {
 color: #ff9800;
 font-weight: bold;
@@ -118,11 +134,27 @@ padding: 15px;
 border-radius: 8px;
 }
 
-/* Animation */
 @keyframes pulse {
 0% { transform: scale(1); }
 50% { transform: scale(1.02); }
 100% { transform: scale(1); }
+}
+
+/* Styles for history section */
+#historyContainer {
+margin-top: 40px;
+}
+#historyList {
+list-style: none;
+padding: 0;
+text-align: left;
+}
+.history-item {
+background: #f0f0f0;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 8px;
+font-size: 0.9em;
 }
 </style>
 </head>
@@ -132,113 +164,29 @@ border-radius: 8px;
 <h1>IntentSwap</h1>
 <p>Simplify your Web3 transactions. Just state your intent.</p>
 
+<button id="connectButton">Connect Wallet</button>
+
+<div id="walletInfo">
+<p><strong>Wallet:</strong> <span id="walletAddress"></span></p>
+<p><strong>Balance:</strong> <span id="walletBalance"></span></p>
+</div>
+
 <input type="text" id="intentInput" placeholder="E.g., Swap 1 ETH for USDC" autofocus>
 
-<button id="executeButton">Execute Intent</button>
+<button id="executeButton" style="display: none;">Execute Intent</button>
 
 <div id="resultDisplay"></div>
+
+<div id="historyContainer">
+<h2>Transaction History</h2>
+<ul id="historyList"></ul>
+</div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-// Get the necessary elements from the DOM
-const intentInput = document.getElementById('intentInput');
-const executeButton = document.getElementById('executeButton');
-const resultDisplay = document.getElementById('resultDisplay');
-
-// Mock exchange rates and token data
-const rates = {
-'ETH_USDC': 2500,
-'USDC_ETH': 1 / 2500,
-'SHIB_USDC': 1 / 100,
-'USDC_SHIB': 100,
-'SHIB_ETH': 1 / 250000,
-'ETH_SHIB': 250000
-};
-
-// Function to handle the intent execution logic
-function executeIntent() {
-const userIntent = intentInput.value.trim();
-const lowerCaseIntent = userIntent.toLowerCase();
-
-// Clear the input field after getting the value
-intentInput.value = '';
-
-// Check if the input field is empty
-if (lowerCaseIntent === "") {
-resultDisplay.innerHTML = '<p class="error">Please enter your intent.</p>';
-return;
-}
-
-// Create a loading effect and simulate the intent processing
-resultDisplay.innerHTML = '<p class="loading">Searching for a suitable solution for your intent...</p>';
-
-setTimeout(() => {
-let resultMessage = '';
-let solutionFound = false;
-
-// Simple intent parsing logic
-const match = lowerCaseIntent.match(/(buy|sell|swap|trade)\s+([\d.]+)\s*(\w+)\s*(for|using|with)\s*(\w+)/);
-
-if (match) {
-const action = match[1];
-const amount = parseFloat(match[2]);
-const tokenFrom = match[5].toUpperCase();
-const tokenTo = match[3].toUpperCase();
-
-// Construct the rate key
-let finalTokenFrom = tokenFrom;
-let finalTokenTo = tokenTo;
-let finalAmount = amount;
-
-// Adjust for 'buy' intent to match rate key format
-if (action === 'buy') {
-finalTokenFrom = tokenTo;
-finalTokenTo = tokenFrom;
-}
-
-const rate = rates[`${finalTokenFrom}_${finalTokenTo}`];
-
-if (rate) {
-const receivedAmount = finalAmount * rate;
-solutionFound = true;
-resultMessage = `
-<div class="success">
-<p><strong>✅ Intent successfully resolved!</strong></p>
-<p><strong>Your Intent:</strong> "${userIntent}"</p>
-<p><strong>Proposed Solution:</strong> Swap ${finalAmount.toFixed(4)} ${finalTokenFrom} to receive ${receivedAmount.toFixed(4)} ${finalTokenTo}.</p>
-<p>Rate: 1 ${finalTokenFrom} = ${rate} ${finalTokenTo}.</p>
-</div>
-`;
-}
-}
-
-// Fallback for general or unrecognized intents
-if (!solutionFound) {
-if (lowerCaseIntent.includes('shrimp') || lowerCaseIntent.includes('shrimpers')) {
-resultMessage = `<div class="error"><p>Sorry, we do not support Shrimp NFT swaps. Please try again with popular tokens like ETH, USDC, or SHIB.</p></div>`;
-} else {
-resultMessage = `<div class="error"><p>No suitable solution found for your intent. Please try again with the format: "buy [amount] [tokenA] with [tokenB]".</p></div>`;
-}
-}
-
-// Display the result on the page
-resultDisplay.innerHTML = resultMessage;
-
-}, 2000); // Simulate a 2-second processing time
-}
-
-// Event Listeners
-executeButton.addEventListener('click', executeIntent);
-
-intentInput.addEventListener('keydown', (event) => {
-if (event.key === 'Enter') {
-executeIntent();
-}
-});
-});
+// JavaScript code will be here
 </script>
+
 </body>
 </html>
 
