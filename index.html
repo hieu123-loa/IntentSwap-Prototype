@@ -3,96 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IntentSwap - Web3 Prototype</title>
+<title>Anoma-style Intent-based DEX</title>
 <link rel="stylesheet" href="style.css">
-<style>
-body {
-font-family: Arial, sans-serif;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-background-color: #f4f4f9;
-margin: 0;
-text-align: center;
-}
-.container {
-background: white;
-padding: 40px;
-border-radius: 10px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-width: 90%;
-max-width: 600px;
-}
-h1 {
-color: #333;
-margin-bottom: 10px;
-}
-p {
-color: #666;
-margin-bottom: 20px;
-}
-input {
-width: calc(100% - 22px);
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 5px;
-font-size: 16px;
-}
-button {
-background-color: #007bff;
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-button:hover {
-background-color: #0056b3;
-}
-#resultDisplay {
-margin-top: 25px;
-font-size: 16px;
-min-height: 50px;
-}
-.loading {
-color: #ff9800;
-}
-.success {
-color: #4caf50;
-}
-.error {
-color: #f44336;
-}
-.solution-link {
-display: inline-block;
-margin-top: 10px;
-color: #007bff;
-text-decoration: none;
-font-weight: bold;
-}
-.solution-link:hover {
-text-decoration: underline;
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
-<h1>IntentSwap</h1>
-<p>Simplify your Web3 transactions. Just state your intent.</p>
+<h1 class="title">Anoma-style DEX</h1>
+<p class="subtitle">Execute token swaps based on your natural language intent.</p>
 
-<input type="text" id="intentInput" placeholder="E.g., Swap 1 ETH for USDC" autofocus>
+<div class="intent-box">
+<div class="intent-header">
+<h3>Enter Your Intent</h3>
+</div>
 
-<button id="executeButton">Execute Intent</button>
+<div class="input-group">
+<input type="text" id="intentInput" placeholder="Example: swap 10 ETH for USDC">
+<button id="executeButton">Execute</button>
+</div>
 
-<div id="resultDisplay"></div>
+<div id="resultDisplay" class="result-display">
+<p>Enter an intent to see the magic happen!</p>
+</div>
+</div>
+
+<div class="transaction-history-container">
+<h3>Solution History</h3>
+<button id="clearHistoryButton">Clear History</button>
+<ul id="historyList">
+<li class="no-history">No transactions have been executed yet.</li>
+</ul>
+</div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
