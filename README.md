@@ -63,3 +63,26 @@ Instead, they can simply say: "I want to swap 1 ETH for USDC at the best possibl
 • When a user accepts a Solution, the transaction is executed on-chain. This can be done via an atomic transaction bundle to ensure that all steps of the Intent are completed or none at all.
 
 • Solvers can be rewarded with a small fee for finding a solution (which can be built into the swap price or paid separately).
+4. Potential Scalability Features:
+
+• Cross-Chain Intents: "I want to swap 1 ETH on Ethereum for SOL on Solana." IntentSwap will find the best cross-chain bridge and DEX.
+
+• Arbitrage Intents: "I want to take advantage of the price difference between Uniswap and Sushiswap for the ETH/USDC pair." (For advanced users/bots).
+
+• Compound Intents: "I want to swap ETH for USDC, then stake 50% of that USDC on Aave, and use the remaining 50% to buy NFT X."
+
+• Intent Bundling: Execute multiple Intents at once.
+
+• Gas-less/Sponsored Intents: Solvers can pay users gas fees in exchange for a small portion of the profit from executing the Intent.
+
+5. Benefits of using Intents:
+
+• Simplified user experience: Users do not need deep technical knowledge of DeFi.
+
+• Optimization: Always get the best rates and routes.
+
+• Anti-MEV/Front-running: Solvers can execute transactions in a single block or use MEV protection techniques.
+
+• Flexibility: Supports complex and diverse Intents.
+
+• Scalability: Solvers' network can scale to handle more Intents
